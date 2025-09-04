@@ -1,0 +1,62 @@
+/* Full-page dark animated gradient */
+.landing-div {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* ensures floating elements stay within the page */
+  background: linear-gradient(-45deg, #2d2d2d, #1a1a1a, #3d3c3c, #000000);
+  background-size: 400% 400%;
+  animation: gradientAnimation 5s ease infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* Button styling */
+.landing-button {
+  position: relative;
+  padding: 15px 40px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #000000;
+  border: solid 1px white;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1; /* keep above particles */
+  transition: transform 0.2s, box-shadow 0.3s, background-color 0.3s;
+}
+
+/* Button hover glow */
+.landing-button:hover {
+  transform: scale(1.1);
+  background-color: #000000;
+  box-shadow: 0 0 15px #c8caca, 0 0 30px #ccccce, 0 0 45px #f4f5f5;
+}
+
+
+/* Twinkle animation for stars */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+.particle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition: transform 0.1s linear;
+
+  /* Add twinkle */
+  animation: twinkle 2s infinite;
+  animation-delay: calc(var(--rand) * 2s);
+}
